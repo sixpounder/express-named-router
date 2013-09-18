@@ -12,6 +12,7 @@ var namedRouter = function namedRouter() {
     var applicationInstance = undefined;
     var _allowedVerbs = ['all', 'get', 'post', 'put', 'del'];
     var _options = {};
+    var _pCheck = /:[a-zA-Z0-9_]+(\?)?(\/)?/
 
     this.initForApplication = function(appInstance, options) {
         options = options || {};
@@ -85,7 +86,35 @@ var namedRouter = function namedRouter() {
 
     var addNamedRouteToAppLocals = function(routeName, path) {
         var installPoint = appHelpersInstallPoint();
-        installPoint[routeName + "Path"] = path;
+        installPoint[routeName + "Path"] = function(routeOptions) {
+            var p = path;
+            var qs = {};
+            var qsString = "";
+            routeOptions = routeOptions || {};
+
+            _.map(routeOptions, function(val, key) {                
+                var _pCheck = new RegExp(":" + key + "+(\\?)?", "i");
+                if (p.search(_pCheck) !== -1) {
+                    // Replace parameter
+                    p = p.replace(_pCheck, val);    
+                } else {
+                    // Add to querystring
+                    qs[key] = val;
+                }
+                
+            });
+
+             _.map(qs, function(v,k) {
+                if (qsString === "") {
+                    qsString = "?"
+                } else {
+                    qsString += "&"
+                }
+                qsString += k + "=" + v;
+            });
+
+            return p + qsString;
+        };
     };
 
     var appHelpersInstallPoint = function() {
