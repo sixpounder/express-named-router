@@ -1,0 +1,25 @@
+{
+  "name": "express-named-router",
+  "version": "0.0.1",
+  "description": "A wrapper for Express JS routes definition which allows named routing",
+  "main": "index.js",
+  "dependencies": {
+    "underscore": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sixpounder/express-named-router.git"
+  },
+  "keywords": [
+    "named",
+    "routes",
+    "router",
+    "express"
+  ],
+  "author": "sixpounder",
+  "license": "BSD",
+  "readmeFilename": "README.md"
+}
