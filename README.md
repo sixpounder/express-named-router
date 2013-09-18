@@ -50,7 +50,7 @@ Parameters with non-matching arguments will be ignored.
 
 Status
 ---
-UNSTABLE (work in progress)
+NOT SO STABLE but working
 
 Notes
 -------------
