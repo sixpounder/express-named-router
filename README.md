@@ -32,15 +32,26 @@ You can still register your routes as usual, but if you want you can
 app.namedRoute('contacts', {via: 'get', path: '/contact', handler: routes.contact.index, middlewares: []});
 ```
 
-In your app.locals, you will find contactsPath() = '/contacts', which you can use in your views. For your node scripts, use namedRouter.get('contacts') for the same purpose.
+In your app.locals, therefore in your views and templates, you will find: 
+
+```sh
+routes.contactsPath(); //returns /contacts
+routes.contactsURL(); //returns http://<hostname>:<port>/contacts
+```
+
+For your node scripts, use namedRouter.get('contacts')
+```sh
+namedRouter.get('contacts')
+```
+for the same purpose.
 
 Route parameters
 -----
 When calling, let's say with the previous example, contactsPath(), and the associated route have parameters (i.e. contacts/:type would have the :type parameter in it), you can specify them like this
 
 ```sh
-contactsPath({
-	type: 'cellPhone'
+routes.contactsPath({
+    type: 'cellPhone'
 });
 ```
 
