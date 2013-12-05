@@ -1,6 +1,6 @@
 {
   "name": "express-named-router",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Don't use URL literals in your applications. Express Named Router is a wrapper for Express JS routes definition which allows named routing.",
   "main": "index.js",
   "dependencies": {
