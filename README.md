@@ -59,9 +59,20 @@ This would return '/contacts/cellPhone'. If 'type' is not found in the parameter
 
 Parameters with non-matching arguments will be ignored.
 
+API
+---
+```sh
+var namedRouter = require('express-named-router');
+```
+
+- namedRouter.namedRoute(name, options) adds a named route to application router
+- namedRouter.routes contains all route functions (i.e. namedRouter.routes.contactsPath())
+- namedRouter.get(name) gets the original route registered for a named route
+- namedRouter.route(name) is equivalent to namedRouter.routes.<name>Path()
+
 Status
 ---
-NOT SO STABLE but working
+QUITE STABLE
 
 Notes
 -------------
